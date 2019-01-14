@@ -11,7 +11,7 @@ Node* addInfo(Node* start) {
   Node* first = start;
   Info* in = new Info();
   cout << "Enter info" << endl;
-  cin >> i;
+  cin.get(i, 1000);
   in->setInfo(i);
   if (current == NULL) {
     current = new Node(in);
@@ -47,13 +47,13 @@ void printLargest(Node* start) {
 
 int main() {
   Node* start = NULL;
-  char response[10];
+  char response[1000];
   char y[] = "y";
   char n[] = "n";
   while (strcmp(n, response) != 0) {
     start = addInfo(start);
     cout << "y/n" << endl;
-    cin >> response;
+    cin.get(response, 1000);
   }
   printLargest(start);
 
