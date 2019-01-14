@@ -27,11 +27,21 @@ Node* addInfo(Node* start) {
   return first;
 }
 
-void printStudents(Node* start) {
+void printLargest(Node* start) {
   Node* current = start;
-  Node* next = current->getNext();
-
-  
+  Node* largest = start;
+  while (current != NULL) {
+    Info* i = current->getInfo();
+    Info* in = largest->getInfo();
+    //cout << i->getInfo() << " " << strlen(i->getInfo())<< endl;
+    if (strlen(i->getInfo()) >= strlen(in->getInfo())) {
+      largest = current;
+    }
+    current = current->getNext();
+  }
+  Info* info = largest->getInfo();
+  cout << "String with the most info (the longest string): ";
+  cout << info->getInfo() << " " << strlen(info->getInfo()) << endl;
 }
 
 
@@ -45,4 +55,7 @@ int main() {
     cout << "y/n" << endl;
     cin >> response;
   }
+  printLargest(start);
+
+  return 0;
 }
